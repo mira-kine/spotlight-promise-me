@@ -27,16 +27,20 @@ export const fetchTitle = async (title) => {
   return data;
 };
 
-export const fetchMemes = async () => {
+export const fetchMemesAsync = async () => {
   const resp = await fetch(`https://api.imgflip.com/get_memes`);
   const data = await resp.json();
   console.log('async-3', data.data.memes);
   return data;
 };
 
-/**
- * TODO:
- */
+export const fetchMemes = () => {
+  return fetch(`https://api.imgflip.com/get_memes`)
+    .then((data) => data.json())
+    .then((resp) => {
+      console.log('then-2', resp.data.memes);
+    });
+};
 
 /**
  * TODO:
